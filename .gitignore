@@ -1,0 +1,32 @@
+# ===== 密钥与配置文件 =====
+.env
+.env.*
+!.env.example
+
+# ===== IDE / 编辑器 =====
+.idea/
+.vscode/
+*.iml
+
+# ===== Python 缓存与构建 =====
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== 日志与临时文件 =====
+*.log
+*.tmp
+*.bak
+*.swp
+~$*
+.DS_Store
+Thumbs.db
