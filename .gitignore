@@ -27,6 +27,7 @@ dist/
 *.tmp
 *.bak
 *.swp
+call_times_with_jitter.txt
 ~$*
 .DS_Store
 Thumbs.db

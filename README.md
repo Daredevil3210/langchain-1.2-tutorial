@@ -59,6 +59,8 @@ langchain1.2_tutorial/
     ├── 03-PIIMiddleware中间件.ipynb                # 个人信息识别与脱敏
     ├── 04-TodoListMiddleware中间件.ipynb           # 待办事项中间件
     ├── 05-其它内置中间件.ipynb                     # 其它内置中间件示例
+    ├── 06-自定义中间件-Node-style hooks.ipynb      # 节点式自定义中间件
+    ├── 07-自定义中间件-Wrap-style hooks.ipynb      # 包装式自定义中间件
     └── fake_deepseek_server.py                     # 本地模拟 DeepSeek 服务
 ├── todo_workspace/                  # 待办工具示例与测试
 │   ├── my_add.py
@@ -108,7 +110,7 @@ jupyter notebook
 | **chapter05-tools** | 工具调用 | 工具概述、普通函数与 `@tool` 装饰器两种定义方式、工具综合案例 |
 | **chapter06-structured_output** | 结构化输出 | Pydantic / TypedDict 定义输出结构、`with_structured_output` 获取结构化结果 |
 | **chapter07-Agents** | Agent 智能体 | 基本用法、高级用法（ToolStrategy 工具策略、错误处理机制、流式输出）、实战：多功能智能助手 |
-| **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批（中断工具调用 → 人工 approve/reject/edit → `Command(resume)` 恢复）、`PIIMiddleware` 个人信息识别与脱敏、`TodoListMiddleware` 待办管理及其它内置中间件 |
+| **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批（中断工具调用 → 人工 approve/reject/edit → `Command(resume)` 恢复）、`PIIMiddleware` 个人信息识别与脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件 |
 | **todo_workspace** | 测试示例 | 简单工具函数及其测试代码 |
 
 ## 许可证
