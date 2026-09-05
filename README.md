@@ -1,6 +1,6 @@
 # LangChain 1.2 学习教程
 
-基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体与中间件。
+基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体、中间件与记忆。
 
 ## 环境要求
 
@@ -53,15 +53,19 @@ langchain1.2_tutorial/
 │   ├── 04-Agent的高级用法-错误处理机制.ipynb     # 错误处理机制
 │   ├── 05-Agent的高级用法-流式输出.ipynb        # 流式输出
 │   └── 06-实战：多功能智能助手.ipynb     # 实战：多功能智能助手
-└── chapter08-Middleware/            # 第 8 章：中间件
-    ├── 01- SummarizationMiddleware中间件.ipynb    # 对话摘要中间件
-    ├── 02-HumanInTheLoopMiddleware中间件.ipynb    # 人工审批（人在回路）
-    ├── 03-PIIMiddleware中间件.ipynb                # 个人信息识别与脱敏
-    ├── 04-TodoListMiddleware中间件.ipynb           # 待办事项中间件
-    ├── 05-其它内置中间件.ipynb                     # 其它内置中间件示例
-    ├── 06-自定义中间件-Node-style hooks.ipynb      # 节点式自定义中间件
-    ├── 07-自定义中间件-Wrap-style hooks.ipynb      # 包装式自定义中间件
-    └── fake_deepseek_server.py                     # 本地模拟 DeepSeek 服务
+├── chapter08-Middleware/            # 第 8 章：中间件
+│   ├── 01- SummarizationMiddleware中间件.ipynb    # 对话摘要中间件
+│   ├── 02-HumanInTheLoopMiddleware中间件.ipynb    # 人工审批（人在回路）
+│   ├── 03-PIIMiddleware中间件.ipynb                # 个人信息识别与脱敏
+│   ├── 04-TodoListMiddleware中间件.ipynb           # 待办事项中间件
+│   ├── 05-其它内置中间件.ipynb                     # 其它内置中间件示例
+│   ├── 06-自定义中间件-Node-style hooks.ipynb      # 节点式自定义中间件
+│   ├── 07-自定义中间件-Wrap-style hooks.ipynb      # 包装式自定义中间件
+│   ├── 08-hook函数的执行顺序.ipynb                  # hook 函数的执行顺序
+│   └── fake_deepseek_server.py                     # 本地模拟 DeepSeek 服务
+├── chapter09-memory/                 # 第 9 章：记忆
+│   ├── 01-agent的记忆测试.ipynb           # Agent 记忆测试
+│   └── 02-短期记忆.ipynb                  # 短期记忆
 ├── todo_workspace/                  # 待办工具示例与测试
 │   ├── my_add.py
 │   └── test_my_add.py
@@ -110,7 +114,8 @@ jupyter notebook
 | **chapter05-tools** | 工具调用 | 工具概述、普通函数与 `@tool` 装饰器两种定义方式、工具综合案例 |
 | **chapter06-structured_output** | 结构化输出 | Pydantic / TypedDict 定义输出结构、`with_structured_output` 获取结构化结果 |
 | **chapter07-Agents** | Agent 智能体 | 基本用法、高级用法（ToolStrategy 工具策略、错误处理机制、流式输出）、实战：多功能智能助手 |
-| **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批（中断工具调用 → 人工 approve/reject/edit → `Command(resume)` 恢复）、`PIIMiddleware` 个人信息识别与脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件 |
+| **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批、`PIIMiddleware` 个人信息脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件与 hook 执行顺序 |
+| **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆 |
 | **todo_workspace** | 测试示例 | 简单工具函数及其测试代码 |
 
 ## 许可证
