@@ -65,7 +65,10 @@ langchain1.2_tutorial/
 │   └── fake_deepseek_server.py                     # 本地模拟 DeepSeek 服务
 ├── chapter09-memory/                 # 第 9 章：记忆
 │   ├── 01-agent的记忆测试.ipynb           # Agent 记忆测试
-│   └── 02-短期记忆.ipynb                  # 短期记忆
+│   ├── 02-短期记忆.ipynb                  # 短期记忆
+│   ├── 03-记忆治理策略.ipynb              # 记忆治理策略（消息删除 / 摘要）
+│   ├── 04-长期记忆-基础API的使用.ipynb     # 长期记忆：基础 API（含 PostgreSQL 存储）
+│   └── 05-长期记忆-agent.ipynb            # 长期记忆：Agent 集成
 ├── todo_workspace/                  # 待办工具示例与测试
 │   ├── my_add.py
 │   └── test_my_add.py
@@ -115,7 +118,7 @@ jupyter notebook
 | **chapter06-structured_output** | 结构化输出 | Pydantic / TypedDict 定义输出结构、`with_structured_output` 获取结构化结果 |
 | **chapter07-Agents** | Agent 智能体 | 基本用法、高级用法（ToolStrategy 工具策略、错误处理机制、流式输出）、实战：多功能智能助手 |
 | **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批、`PIIMiddleware` 个人信息脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件与 hook 执行顺序 |
-| **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆 |
+| **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆、记忆治理策略（消息删除/摘要）、长期记忆（基础 API 与 Agent 集成） |
 | **todo_workspace** | 测试示例 | 简单工具函数及其测试代码 |
 
 ## 许可证
