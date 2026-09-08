@@ -28,6 +28,7 @@ dist/
 *.bak
 *.swp
 call_times_with_jitter.txt
+chapter10-RAG/parsed_files/
 ~$*
 .DS_Store
 Thumbs.db

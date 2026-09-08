@@ -1,6 +1,6 @@
 # LangChain 1.2 学习教程
 
-基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体、中间件与记忆。
+基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体、中间件、记忆，以及 RAG 文档加载。
 
 ## 环境要求
 
@@ -18,6 +18,7 @@ pip install -r requirements.txt
 langchain1.2_tutorial/
 ├── README.md                        # 本文件
 ├── requirements.txt                 # 依赖清单
+├── requirements_full.txt             # RAG/记忆等完整依赖清单
 ├── .env.example                     # 环境变量模板（复制为 .env 并填入你的 Key）
 ├── .gitignore                       # 已忽略 .env 等敏感文件
 ├── LICENSE                          # MIT License
@@ -69,6 +70,10 @@ langchain1.2_tutorial/
 │   ├── 03-记忆治理策略.ipynb              # 记忆治理策略（消息删除 / 摘要）
 │   ├── 04-长期记忆-基础API的使用.ipynb     # 长期记忆：基础 API（含 PostgreSQL 存储）
 │   └── 05-长期记忆-agent.ipynb            # 长期记忆：Agent 集成
+├── chapter10-RAG/                    # 第 10 章：RAG 与文档加载
+│   └── 01-文档加载器.ipynb                 # TXT/CSV/JSON/PDF/Word/Markdown/HTML/目录加载
+├── asset/                            # Notebook 使用的示例素材
+│   └── load/                         # 文本、结构化数据及文档样例
 ├── todo_workspace/                  # 待办工具示例与测试
 │   ├── my_add.py
 │   └── test_my_add.py
@@ -106,6 +111,8 @@ jupyter notebook
 
 > 第 3 章 LangSmith 追踪另需在 `.env` 中配置 `LANGSMITH_TRACING=true`、`LANGSMITH_API_KEY`、`LANGSMITH_PROJECT`、`LANGSMITH_ENDPOINT`。
 
+> 第 9 章 PostgreSQL 长期记忆示例需要额外配置 `POSTGRES_DB_URL`；仅在运行对应示例时使用。
+
 ## 章节内容
 
 | 章节 | 主题 | 要点 |
@@ -118,7 +125,8 @@ jupyter notebook
 | **chapter06-structured_output** | 结构化输出 | Pydantic / TypedDict 定义输出结构、`with_structured_output` 获取结构化结果 |
 | **chapter07-Agents** | Agent 智能体 | 基本用法、高级用法（ToolStrategy 工具策略、错误处理机制、流式输出）、实战：多功能智能助手 |
 | **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批、`PIIMiddleware` 个人信息脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件与 hook 执行顺序 |
-| **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆、记忆治理策略（消息删除/摘要）、长期记忆（基础 API 与 Agent 集成） |
+| **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆、记忆治理策略（消息删除/摘要）、长期记忆（基础 API 与 Agent 集成，含 PostgreSQL 配置示例） |
+| **chapter10-RAG** | RAG 与文档加载 | TXT、CSV、JSON、PDF、Word、Markdown、HTML 和目录加载示例 |
 | **todo_workspace** | 测试示例 | 简单工具函数及其测试代码 |
 
 ## 许可证
