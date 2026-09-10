@@ -1,6 +1,14 @@
 # LangChain 1.2 学习教程
 
-基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体、中间件、记忆，以及 RAG 文档加载。
+基于 **LangChain 1.x** 的大模型应用开发入门教程，通过 Jupyter Notebook 逐步演示大模型应用的完整开发链路：模型接入与调用、链路追踪、消息与提示词、工具调用、结构化输出、Agent 智能体、中间件、记忆，以及 RAG 文档加载、切分与嵌入。
+
+## 最新更新
+
+[v0.7.0：RAG 文档切分与嵌入模型](https://github.com/Daredevil3210/langchain-1.2-tutorial/releases/tag/v0.7.0)
+
+- 新增文档切分器教程：字符、递归字符、Token、语义、HTML 标题、代码与 Markdown 切分。
+- 新增文档嵌入模型教程：CLOSEAI / 硅基流动接入、单句向量化、批量文本与 CSV 文档向量化。
+- 补充 RAG 依赖与环境变量配置说明；详细记录见 [发布说明](releases/v0.7.0.md)。
 
 ## 环境要求
 
@@ -70,8 +78,12 @@ langchain1.2_tutorial/
 │   ├── 03-记忆治理策略.ipynb              # 记忆治理策略（消息删除 / 摘要）
 │   ├── 04-长期记忆-基础API的使用.ipynb     # 长期记忆：基础 API（含 PostgreSQL 存储）
 │   └── 05-长期记忆-agent.ipynb            # 长期记忆：Agent 集成
-├── chapter10-RAG/                    # 第 10 章：RAG 与文档加载
-│   └── 01-文档加载器.ipynb                 # TXT/CSV/JSON/PDF/Word/Markdown/HTML/目录加载
+├── chapter10-RAG/                    # 第 10 章：RAG 文档加载、切分与嵌入
+│   ├── 01-文档加载器.ipynb                 # TXT/CSV/JSON/PDF/Word/Markdown/HTML/目录加载
+│   ├── 02-文档切分器.ipynb                 # 字符/递归/Token/语义/HTML/代码/Markdown 切分
+│   └── 03-文档嵌入模型.ipynb               # 模型初始化、单句/批量文本/CSV 向量化
+├── releases/                        # 版本发布说明
+│   └── v0.7.0.md
 ├── asset/                            # Notebook 使用的示例素材
 │   └── load/                         # 文本、结构化数据及文档样例
 ├── todo_workspace/                  # 待办工具示例与测试
@@ -113,6 +125,30 @@ jupyter notebook
 
 > 第 9 章 PostgreSQL 长期记忆示例需要额外配置 `POSTGRES_DB_URL`；仅在运行对应示例时使用。
 
+### 第 10 章 RAG 配置
+
+建议依次学习文档加载器、文档切分器、文档嵌入模型。Notebook 中的素材路径相对于 `chapter10-RAG/`，请将内核工作目录设为该目录。
+
+`requirements.txt` 中部分 RAG 依赖已注释；需要运行文档解析、Token 切分等示例时，可安装完整依赖：
+
+```bash
+pip install -r requirements_full.txt
+```
+
+也可按示例安装所需依赖：Token 切分需要 `tiktoken`，PDF 加载需要 `pypdf`，Word / Markdown / HTML 的 Unstructured 加载器需要 `unstructured` 及对应格式依赖。文档加载器当前保存的 Word 示例输出包含缺少 `unstructured` 的报错，安装相关依赖后重新运行该单元格。
+
+将下列变量按需添加到本地 `.env`，填入自己的凭据及服务地址：
+
+```dotenv
+CLOSEAI_API_KEY=your_closeai_api_key
+CLOSEAI_BASE_URL=your_closeai_openai_compatible_base_url
+SILICONFLOW_API_KEY=your_siliconflow_api_key
+SILICONFLOW_BASE_URL=your_siliconflow_openai_compatible_base_url
+MINERU_API_TOKEN=your_mineru_api_token
+```
+
+语义切分示例默认使用 CLOSEAI 的 `text-embedding-3-large`；嵌入模型教程还演示硅基流动的 `Pro/BAAI/bge-m3`，通过 `init_embeddings()` 或 `OpenAIEmbeddings` 初始化，再调用 `embed_query()` / `embed_documents()`。这些在线示例需要有效凭据及网络连接，并可能产生服务费用。`MINERU_API_TOKEN` 仅用于文档加载器中的 MinerU 在线解析示例。
+
 ## 章节内容
 
 | 章节 | 主题 | 要点 |
@@ -126,7 +162,7 @@ jupyter notebook
 | **chapter07-Agents** | Agent 智能体 | 基本用法、高级用法（ToolStrategy 工具策略、错误处理机制、流式输出）、实战：多功能智能助手 |
 | **chapter08-Middleware** | 中间件 | `SummarizationMiddleware` 对话摘要、`HumanInTheLoopMiddleware` 人工审批、`PIIMiddleware` 个人信息脱敏、`TodoListMiddleware` 待办管理、其它内置中间件，以及 Node-style / Wrap-style 自定义中间件与 hook 执行顺序 |
 | **chapter09-memory** | 记忆 | Agent 记忆测试、短期记忆、记忆治理策略（消息删除/摘要）、长期记忆（基础 API 与 Agent 集成，含 PostgreSQL 配置示例） |
-| **chapter10-RAG** | RAG 与文档加载 | TXT、CSV、JSON、PDF、Word、Markdown、HTML 和目录加载示例 |
+| **chapter10-RAG** | RAG 文档加载、切分与嵌入 | 多格式文档加载；字符、递归、Token、语义及结构化切分；嵌入模型初始化、单句与批量文档向量化 |
 | **todo_workspace** | 测试示例 | 简单工具函数及其测试代码 |
 
 ## 许可证
